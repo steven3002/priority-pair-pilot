@@ -2,16 +2,8 @@
 
 import React, { useState } from 'react';
 import { Cpu, ShieldCheck, Check, Copy, ExternalLink, Terminal, Activity } from 'lucide-react';
-
-interface Transaction {
-  id: string;
-  type: string;
-  address: string;
-  amountUSD: number;
-  tickLower: number;
-  tickUpper: number;
-  age: string;
-}
+import { CONTRACT_ADDRESS } from '@/lib/constants';
+import type { Transaction } from '@/types';
 
 interface VenueProps {
   indexedTransactions: Transaction[];
@@ -20,10 +12,9 @@ interface VenueProps {
 
 export default function Venue({ indexedTransactions, triggerToast }: VenueProps) {
   const [copiedContract, setCopiedContract] = useState(false);
-  const contractAddress = "0xc1738D90E2E26C35784A0d3E3d8A9f795074bcA4";
 
   const copyContractToClipboard = () => {
-    navigator.clipboard.writeText(contractAddress)
+    navigator.clipboard.writeText(CONTRACT_ADDRESS)
       .then(() => {
         setCopiedContract(true);
         triggerToast("Uniswap V3 WETH/USDC Address copied!");
@@ -67,7 +58,7 @@ export default function Venue({ indexedTransactions, triggerToast }: VenueProps)
               </div>
               <div className="flex items-center justify-between bg-slate-900 p-2.5 rounded border border-slate-800">
                 <span className="font-mono text-[10px] md:text-xs text-slate-200 overflow-x-auto whitespace-nowrap scrollbar-none pr-6 font-bold">
-                  {contractAddress}
+                  {CONTRACT_ADDRESS}
                 </span>
                 <button 
                   onClick={copyContractToClipboard}
@@ -86,7 +77,7 @@ export default function Venue({ indexedTransactions, triggerToast }: VenueProps)
             <span className="font-mono text-white">0.30% Pool Category</span>
           </div>
           <a 
-            href={`https://app.uniswap.org/explore/pools/optimism/${contractAddress}`} 
+            href={`https://app.uniswap.org/explore/pools/optimism/${CONTRACT_ADDRESS}`} 
             target="_blank" 
             rel="noreferrer"
             className="bg-[#FF0420] hover:bg-red-700 text-white font-black text-xs px-5 py-2.5 rounded-lg transition-all flex items-center justify-center space-x-2 text-center"

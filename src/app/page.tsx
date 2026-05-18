@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { getLivePoolData } from '@/lib/api';
+import type { Transaction } from '@/types';
 
 import Telemetry from '@/components/Telemetry';
-import AlertBox from '@/components/AlertBox'; // Standalone Disclaimer Check
+import AlertBox from '@/components/AlertBox';
 import Hero from '@/components/Hero';
 import Venue from '@/components/Venue';
 import Simulator from '@/components/Simulator';
@@ -19,7 +20,7 @@ export default function Home() {
   const [poolTvl, setPoolTvl] = useState(0); 
   const [poolVolume24h, setPoolVolume24h] = useState(0); 
   const [poolFees24h, setPoolFees24h] = useState(0);
-  const [indexedTransactions, setIndexedTransactions] = useState([]);
+  const [indexedTransactions, setIndexedTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
     async function fetchRealMetrics() {
@@ -30,7 +31,7 @@ export default function Home() {
         setPoolTvl(data.tvlUsd || 0);
         setPoolVolume24h(data.volumeUsd1d || 0);
         if (data.volumeUsd1d) {
-          setPoolFees24h(data.volumeUsd1d * 0.003); // Standard 0.3% fee tier approximation
+          setPoolFees24h(data.volumeUsd1d * 0.003);
         }
       } else {
         triggerToast("Notice: DefiLlama indexer unreachable. Retaining static baseline parameters.");
@@ -55,7 +56,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* 1. Live Indexer Top-bar */}
+      {/* Live Indexer Top-bar */}
       <Telemetry 
         isLoading={isLoading}
         poolTvl={poolTvl}
@@ -65,30 +66,30 @@ export default function Home() {
 
       <main className="flex-grow max-w-7xl w-full mx-auto px-4 md:px-8 py-8 space-y-16">
         
-        {/* 2. Top-Level Risk Disclaimer Alert Box */}
+        {/* Top-Level Risk Disclaimer Alert Box */}
         <AlertBox />
 
-        {/* 3. Hero Block */}
+        {/* Hero Block */}
         <Hero />
         
-        {/* 4. Target Venue Box */}
+        {/* Target Venue Box */}
         <Venue 
           indexedTransactions={indexedTransactions}
           triggerToast={triggerToast}
         />
         
-        {/* 5. Concentrated Calculator */}
+        {/* Concentrated Calculator */}
         <Simulator poolTvl={poolTvl} />
         
-        {/* 6. Execution Lifecycle Blueprint */}
+        {/* Execution Lifecycle Blueprint */}
         <Blueprint />
 
         <Guardrails />
         
-        {/* 7. Onboarding Step-by-Step Flow */}
+        {/* Onboarding Step-by-Step Flow */}
         <Onboarding />
         
-        {/* 8. Soft Interest Portal */}
+        {/* Soft Interest Portal */}
         <Registration triggerToast={triggerToast} />
       </main>
 

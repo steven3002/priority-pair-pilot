@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CONTRACT_ADDRESS } from '@/lib/constants';
 
 interface Step {
   id: number;
@@ -29,7 +30,7 @@ const STEPS: Step[] = [
       "Click the direct pool link below, or search for the WETH/USDC pool contract (fee tier 0.05%) on the Uniswap V3 Optimism application. Ensure your Web3 wallet is switched to Optimism Mainnet before proceeding.",
     actionText: "Uniswap Pool Interface",
     actionLink:
-      "https://app.uniswap.org/#/add/v3/0xc1738D90E2E26C35784A0d3E3d8A9f795074bcA4",
+      `https://app.uniswap.org/#/add/v3/${CONTRACT_ADDRESS}`,
   },
   {
     id: 3,
@@ -39,7 +40,7 @@ const STEPS: Step[] = [
       "Input your target WETH and USDC liquidity range. Sticking to a concentrated range around current prices maximises fee generation and qualifies for campaign rewards. Confirm the transaction in your wallet to begin indexing.",
     actionText: "View Pool Contract",
     actionLink:
-      "https://optimistic.etherscan.io/address/0xc1738D90E2E26C35784A0d3E3d8A9f795074bcA4",
+      `https://optimistic.etherscan.io/address/${CONTRACT_ADDRESS}`,
   },
 ];
 

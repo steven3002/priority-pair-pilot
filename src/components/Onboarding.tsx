@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Wallet, Compass, Zap, BarChart, ExternalLink } from 'lucide-react';
+import { CONTRACT_ADDRESS } from '@/lib/constants';
 
 export default function Onboarding() {
   const steps = [
@@ -18,7 +19,7 @@ export default function Onboarding() {
       title: "Venue Verification",
       desc: "Navigate to the official Uniswap V3 WETH/USDC pool (0.3% fee tier) contract.",
       icon: <Compass className="w-5 h-5 text-slate-700" />,
-      link: "https://app.uniswap.org/explore/pools/optimism/0xc1738D90E2E26C35784A0d3E3d8A9f795074bcA4"
+      link: `https://app.uniswap.org/explore/pools/optimism/${CONTRACT_ADDRESS}`
     },
     {
       node: "03",

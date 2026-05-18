@@ -3,10 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
+import { CONTRACT_ADDRESS } from '@/lib/constants';
 
 export default function Footer() {
-  const contractAddress = "0xc1738D90E2E26C35784A0d3E3d8A9f795074bcA4";
-
   return (
     <footer className="bg-slate-950 text-slate-500 pt-16 pb-12 px-6 lg:px-12 border-t border-slate-900 font-sans">
       <div className="max-w-6xl mx-auto space-y-12">
@@ -42,7 +41,7 @@ export default function Footer() {
             <ul className="space-y-2 text-slate-300 font-medium">
               <li>
                 <a 
-                  href={`https://app.uniswap.org/explore/pools/optimism/${contractAddress}`}
+                  href={`https://app.uniswap.org/explore/pools/optimism/${CONTRACT_ADDRESS}`}
                   target="_blank"
                   rel="noreferrer"
                   className="hover:text-white transition-colors inline-flex items-center gap-1"

@@ -2,20 +2,18 @@
 
 import React, { useState } from 'react';
 import { Sliders } from 'lucide-react';
+import { ALLOCATIONS } from '@/lib/constants';
 
 interface SimulatorProps {
   poolTvl: number;
 }
 
 export default function Simulator({ poolTvl }: SimulatorProps) {
-  // 1. EXPLICIT CONSTANTS: No magic numbers in the math. 
-  // Reviewers can easily see and adjust these base assumptions.
   const WETH_PRICE_USD = 3200;
   const OP_PRICE_USD = 1.45; 
-  const ACTIVE_PHASE_OP = 205000;
-  const RETENTION_PHASE_OP = 35000;
+  const ACTIVE_PHASE_OP = ALLOCATIONS.ACTIVE;
+  const RETENTION_PHASE_OP = ALLOCATIONS.RETENTION;
 
-  // 2. STATE
   const [lpDepositAmount, setLpDepositAmount] = useState('25000'); 
   const [priceMinRange, setPriceMinRange] = useState(2800);
   const [priceMaxRange, setPriceMaxRange] = useState(3600);
@@ -28,22 +26,18 @@ export default function Simulator({ poolTvl }: SimulatorProps) {
   const maxRangeVal = Math.max(WETH_PRICE_USD + 10, priceMaxRange);
   
   const rangeRatio = (maxRangeVal - minRangeVal) / WETH_PRICE_USD;
-  // Approximation of Uniswap V3 capital efficiency multiplier (capped at 18.5x)
   const concentrationMultiplier = Math.max(1.0, Math.min(18.5, 2.0 / (rangeRatio || 0.1)));
 
   const virtualLiquidity = parsedDeposit * concentrationMultiplier;
   
-  // Prevent division by zero if DefiLlama TVL hasn't loaded yet
   const safePoolTvl = poolTvl > 0 ? poolTvl : 5000000; 
   const estimatedPoolShare = virtualLiquidity / (safePoolTvl + virtualLiquidity);
 
-  // 4. REWARD CALCULATIONS
   const estOpActiveRewards = ACTIVE_PHASE_OP * estimatedPoolShare;
   const estOpRetentionRewards = RETENTION_PHASE_OP * estimatedPoolShare;
   
-  const estimatedWeeklyOpYield = estOpActiveRewards / 10; // 10 Week Campaign
+  const estimatedWeeklyOpYield = estOpActiveRewards / 10;
   
-  // Formula: ((Weekly OP * 52 Weeks * OP Price) / Principal USD) * 100
   const projectedApr = parsedDeposit > 0 
     ? (((estimatedWeeklyOpYield * 52 * OP_PRICE_USD) / parsedDeposit) * 100).toFixed(1) 
     : "0.0";

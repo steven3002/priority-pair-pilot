@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { PieChart, Layers, Calendar, ShieldCheck, Info } from 'lucide-react';
+import { ALLOCATIONS } from '@/lib/constants';
 
 export default function IncentivesPage() {
-  const TOTAL_ALLOCATION = 240000;
-  const ACTIVE_ALLOCATION = 205000;
-  const RETENTION_ALLOCATION = 35000;
+  const TOTAL_ALLOCATION = ALLOCATIONS.TOTAL;
+  const ACTIVE_ALLOCATION = ALLOCATIONS.ACTIVE;
+  const RETENTION_ALLOCATION = ALLOCATIONS.RETENTION;
 
   const activePercentage = ((ACTIVE_ALLOCATION / TOTAL_ALLOCATION) * 100).toFixed(1);
   const retentionPercentage = ((RETENTION_ALLOCATION / TOTAL_ALLOCATION) * 100).toFixed(1);
@@ -177,7 +178,7 @@ export default function IncentivesPage() {
         <div className="bg-amber-50/50 border border-amber-200 rounded-2xl p-4 flex items-start space-x-3 text-xs max-w-4xl mx-auto">
           <Info className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
           <p className="text-amber-800 leading-relaxed font-sans font-medium">
-            <strong>Architecture Architecture Note:</strong> Operational parameters are constructed entirely via pure stateless tracking configurations. PriorityPair Pilot intentionally decouples metrics reporting from the core smart contracts to isolate tracking logic and introduce zero proxy custody risks.
+            <strong>Architecture Note:</strong> Operational parameters are constructed entirely via pure stateless tracking configurations. PriorityPair Pilot intentionally decouples metrics reporting from the core smart contracts to isolate tracking logic and introduce zero proxy custody risks.
           </p>
         </div>
 

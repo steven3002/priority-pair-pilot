@@ -26,7 +26,6 @@ export default function Registration({ triggerToast }: RegistrationProps) {
     
     setSubmittingInterest(true);
     
-    // Simulating network request for the MVP
     setTimeout(() => {
       setSubmittingInterest(false);
       setInterestSubmittedSuccess(true);
@@ -65,6 +64,12 @@ export default function Registration({ triggerToast }: RegistrationProps) {
               <Lock className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 mt-0.5" />
               <p className="text-[10px] text-slate-400 font-sans leading-relaxed">
                 <strong className="text-slate-300">Confidential & Non-Binding:</strong> Data is collected solely to demonstrate baseline capital interest to the Optimism Grants Council. No smart contract approvals are required.
+              </p>
+            </div>
+            
+            <div className="bg-[#FF0420]/10 border border-[#FF0420]/20 p-3 rounded-lg flex items-center justify-center">
+              <p className="text-[10px] font-bold text-[#FF0420] uppercase tracking-widest text-center">
+                Interactive Demo Component Only
               </p>
             </div>
           </div>
