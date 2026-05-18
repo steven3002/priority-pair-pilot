@@ -65,9 +65,9 @@ export default function Simulator({ poolTvl }: SimulatorProps) {
           
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <span className="text-xs font-black text-slate-950">SIMULATION PARAMETERS</span>
-            <span className="text-[10px] text-slate-400 font-bold">
-              WETH Ref: ${WETH_PRICE_USD} | OP Ref: ${OP_PRICE_USD}
-            </span>
+            <div className="text-[10px] text-slate-500 font-medium">
+              Reward Denomination: <span className="text-[#FF0420] font-bold">Native OP Token</span>
+            </div>
           </div>
 
           {/* Deposit Amount */}

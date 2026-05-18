@@ -15,8 +15,8 @@ export default function Blueprint() {
         <h2 className="text-3xl font-black text-slate-950 font-sans tracking-tight">
           Campaign Lifecycle Blueprint
         </h2>
-        <p className="text-slate-500 text-xs md:text-sm font-sans leading-relaxed">
-          We track capital from baseline execution to post-reward stability, preventing standard mercenary outflow.
+        <p className="text-slate-500 text-sm leading-relaxed">
+          The pilot executes over a strict 14-week chronological lifecycle: 10 weeks of active, concentrated OP distributions followed immediately by a critical 4-week zero-emission retention monitoring phase.
         </p>
       </div>
 

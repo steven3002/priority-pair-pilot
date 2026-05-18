@@ -29,14 +29,19 @@ export default function Hero() {
           </p>
 
           {/* Verified Badge / Metrics Checklist */}
-          <div className="grid grid-cols-2 gap-4 pt-2 text-[10px] text-slate-600">
-            <div className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded border border-slate-200/60">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-              <span><strong>Zero Smart Contract Risk:</strong> Never custodying private keys</span>
+          <div className="grid grid-cols-1 gap-4 pt-2 text-[10px] text-slate-600">
+            <div className="flex items-start space-x-3 bg-slate-50 p-3 rounded border border-slate-200/60">
+              <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <h3 className="font-bold text-slate-900 text-sm">No Additional Custody Layer</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Users deploy directly to Uniswap V3 on OP Mainnet. PriorityPair Pilot operates entirely as an off-chain telemetry engine and never handles, routes, or custodies user capital, isolating risk solely to standard DEX market mechanics.
+                </p>
+              </div>
             </div>
-            <div className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded border border-slate-200/60">
-              <Database className="w-4 h-4 text-slate-700 flex-shrink-0" />
-              <span><strong>Sub-Graph Monitored:</strong> Indexed via DefiLlama tracker</span>
+            <div className="flex items-center space-x-3 bg-slate-50 p-3 rounded border border-slate-200/60">
+              <Database className="w-5 h-5 text-slate-700 flex-shrink-0" />
+              <span className="text-sm"><strong>Sub-Graph Monitored:</strong> Indexed via DefiLlama tracker</span>
             </div>
           </div>
 
@@ -66,8 +71,8 @@ export default function Hero() {
 
             {/* Planned Duration */}
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-500">Planned Duration:</span>
-              <span className="text-xs font-bold text-slate-900 bg-white px-2 py-0.5 border border-slate-200 rounded">10 Weeks</span>
+              <span className="text-slate-500 text-xs">10 Active + 4 Retention</span>
+              <span className="font-bold text-slate-900 bg-white px-2 py-0.5 border border-slate-200 rounded text-xs">14 Weeks Total</span>
             </div>
 
             {/* Reward Split */}
